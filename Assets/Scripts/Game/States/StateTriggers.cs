@@ -3,9 +3,10 @@ namespace BaseShooter.State
 	public enum StateTriggers
 	{
 		NONE,
-		START_GAME_REQUEST,
+		LOADING_COMPLETED,
 		PAUSE_GAME_REQUEST,
 		RESUME_GAME_REQUEST,
+		RESTART_GAME_REQUEST,
 		REPLAY_GAME_REQUEST,
 	}
 

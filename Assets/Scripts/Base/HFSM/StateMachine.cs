@@ -11,29 +11,29 @@ namespace BaseShooter.HFSM
 
 		private StateMachine parent;
 		private StateMachine defaultSubState;
-		private StateMachine currentSubState;		
+		private StateMachine currentSubState;
 
 		public void EnterStateMachine()
 		{
 			OnEnter();
 
-			if (currentSubState ==null && defaultSubState !=null)
+			if (currentSubState == null && defaultSubState != null)
 			{
-				currentSubState= defaultSubState;
+				currentSubState = defaultSubState;
 			}
 
-			currentSubState?.EnterStateMachine();	
+			currentSubState?.EnterStateMachine();
 		}
 
 		public void UpdateStateMachine()
 		{
-			OnUpdate();	
-			currentSubState?.UpdateStateMachine();	
+			OnUpdate();
+			currentSubState?.UpdateStateMachine();
 		}
 
-		public void ExitStateMachine() 
+		public void ExitStateMachine()
 		{
-			currentSubState?.ExitStateMachine();	
+			currentSubState?.ExitStateMachine();
 			OnExit();
 		}
 
@@ -48,7 +48,7 @@ namespace BaseShooter.HFSM
 				Debug.LogWarning("Duplicated transition! : " + trigger);
 				return;
 			}
-			sourceStateMachine.transitions.Add(trigger, targetStateMachine);	
+			sourceStateMachine.transitions.Add(trigger, targetStateMachine);
 		}
 
 		public void AddSubState(StateMachine subState)
@@ -92,8 +92,8 @@ namespace BaseShooter.HFSM
 		{
 			currentSubState?.ExitStateMachine();
 			var nextState = substates[state.GetType()];
-			currentSubState= nextState;
-			nextState.EnterStateMachine();	
+			currentSubState = nextState;
+			nextState.EnterStateMachine();
 		}
 
 		public void SetDefaultState() => ChangeSubState(defaultSubState);

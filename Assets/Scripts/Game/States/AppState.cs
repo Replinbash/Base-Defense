@@ -2,6 +2,7 @@ namespace BaseShooter.State
 {
 	using BaseShooter.Base.Component;
 	using BaseShooter.HFSM;
+	using UnityEngine;
 
 	public class AppState : StateMachine
 	{
@@ -22,27 +23,27 @@ namespace BaseShooter.State
 			AddSubState(pauseGameState);
 			AddSubState(replayGameState);
 
-			loadingState.AddTransition(loadingState, inGameState, (int)StateTriggers.START_GAME_REQUEST);
+			loadingState.AddTransition(loadingState, inGameState, (int)StateTriggers.LOADING_COMPLETED);
 			inGameState.AddTransition(inGameState, pauseGameState, (int)StateTriggers.PAUSE_GAME_REQUEST);
 			inGameState.AddTransition(inGameState, replayGameState, (int)StateTriggers.REPLAY_GAME_REQUEST);
-			replayGameState.AddTransition(replayGameState, inGameState, (int)StateTriggers.RESUME_GAME_REQUEST);
+			replayGameState.AddTransition(replayGameState, inGameState, (int)StateTriggers.RESTART_GAME_REQUEST);
 			pauseGameState.AddTransition(pauseGameState, inGameState, (int)StateTriggers.RESUME_GAME_REQUEST);
 		}
 
 
 		protected override void OnEnter()
 		{
-
+			Debug.Log("AppState OnEnter");
 		}
 
 		protected override void OnUpdate()
 		{
-
+			Debug.Log("AppState Update");
 		}
 
 		protected override void OnExit()
 		{
-
+			Debug.Log("AppState OnExit");
 		}
 	}
 

@@ -2,10 +2,9 @@ namespace BaseShooter.State
 {
 	using BaseShooter.Base.Component;
 	using BaseShooter.HFSM;
+	using UnityEngine;
 
-	/// <summary>
-	/// Bu state'de oyun duracak ve ayarlar gösterilecek.
-	/// </summary>
+	// TODO: PAUSE GAME AND SETTÝNGS SCREEN
 	public class PauseGameState : StateMachine
 	{
 		public PauseGameState(ComponentContainer componentContainer)
@@ -15,12 +14,12 @@ namespace BaseShooter.State
 
 		protected override void OnEnter()
 		{
-
+			Debug.Log("PauseGameState State OnEnter");
 		}
 		
 		protected override void OnExit()
 		{
-
+			Debug.Log("PauseGameState State OnExit");
 		}
 	}
 
