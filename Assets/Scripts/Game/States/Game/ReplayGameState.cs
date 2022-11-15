@@ -4,6 +4,7 @@ namespace BaseShooter.State
 	using BaseShooter.HFSM;
 	using UnityEngine;
 
+	//TODO: Player stack and tracer will be empty then spawn to base.
 	public class ReplayGameState : StateMachine
 	{
 		public ReplayGameState(ComponentContainer componentContainer)

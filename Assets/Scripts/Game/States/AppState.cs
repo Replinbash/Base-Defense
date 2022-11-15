@@ -6,28 +6,23 @@ namespace BaseShooter.State
 
 	public class AppState : StateMachine
 	{
-		private LoadingState loadingState;
-		private InGameState inGameState;
-		private PauseGameState pauseGameState;
-		private ReplayGameState replayGameState;
+		private LoadingState _loadingState;
+		private GameState _gameState;
+		private ReplayGameState _replayGameState;
 
 		public AppState(ComponentContainer componentContainer)
 		{
-			loadingState = new LoadingState(componentContainer);
-			inGameState = new InGameState(componentContainer);
-			pauseGameState = new PauseGameState(componentContainer);
-			replayGameState = new ReplayGameState(componentContainer);
+			_loadingState = new LoadingState(componentContainer);
+			_gameState = new GameState(componentContainer);
+			_replayGameState = new ReplayGameState(componentContainer);
 
-			AddSubState(loadingState);
-			AddSubState(inGameState);
-			AddSubState(pauseGameState);
-			AddSubState(replayGameState);
+			this.AddSubState(_loadingState);
+			this.AddSubState(_gameState);
+			this.AddSubState(_replayGameState);
 
-			loadingState.AddTransition(loadingState, inGameState, (int)StateTriggers.LOADING_COMPLETED);
-			inGameState.AddTransition(inGameState, pauseGameState, (int)StateTriggers.PAUSE_GAME_REQUEST);
-			inGameState.AddTransition(inGameState, replayGameState, (int)StateTriggers.REPLAY_GAME_REQUEST);
-			replayGameState.AddTransition(replayGameState, inGameState, (int)StateTriggers.RESTART_GAME_REQUEST);
-			pauseGameState.AddTransition(pauseGameState, inGameState, (int)StateTriggers.RESUME_GAME_REQUEST);
+			_loadingState.AddTransition(_loadingState, _gameState, (int)StateTriggers.LOADING_COMPLETED);
+			_gameState.AddTransition(_gameState, _replayGameState, (int)StateTriggers.REPLAY_GAME_REQUEST);
+			_replayGameState.AddTransition(_replayGameState, _gameState, (int)StateTriggers.RESTART_GAME_REQUEST);
 		}
 
 

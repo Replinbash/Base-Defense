@@ -3,6 +3,7 @@ namespace BaseShooter
 	using BaseShooter.Base.Component;
 	using BaseShooter.Component;
 	using BaseShooter.State;
+	using System;
 	using UnityEngine;
 
 	public class MainComponent : MonoBehaviour
@@ -11,6 +12,7 @@ namespace BaseShooter
 		private ComponentContainer _componentContainer;
 		private GamePlayComponent _gamePlayComponent;
 		private InputSystem _inputSystem;
+		private PlayerAnimationComponent _playerAnimationComponent;
 
 		private void Awake() => _componentContainer = new ComponentContainer();
 
@@ -18,11 +20,12 @@ namespace BaseShooter
 		{
 			CreateGamePlayComponent();
 			CreateInputSystem();
+			CreatePlayerAnimationController();
 
 			InitializeComponents();
 			CreateAppState();
 			_appState.EnterStateMachine();
-		}
+		}		
 
 		private void Update()
 		{
@@ -44,13 +47,19 @@ namespace BaseShooter
 		{
 			_inputSystem = new InputSystem();
 			_componentContainer.AddComponent("InputSystem", _inputSystem);
+		}
 
+		private void CreatePlayerAnimationController()
+		{
+			_playerAnimationComponent = FindObjectOfType<PlayerAnimationComponent>();
+			_componentContainer.AddComponent("PlayerAnimationComponent", _playerAnimationComponent);
 		}
 
 		private void InitializeComponents()
 		{
 			_inputSystem.Initilaze(_componentContainer);
 			_gamePlayComponent.Initilaze(_componentContainer);
+			_playerAnimationComponent.Initilaze(_componentContainer);	
 		}
 
 		private void CreateAppState() => _appState = new AppState(_componentContainer);

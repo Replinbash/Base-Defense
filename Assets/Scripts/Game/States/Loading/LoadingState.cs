@@ -16,10 +16,10 @@ namespace BaseShooter.State
 			Debug.Log("Loading State OnEnter");
 		}
 
+		//TODO: LOADING SCREEN
 		protected override void OnUpdate()
 		{
-			Debug.Log("Loading State OnUpdate");
-			//TODO: LOADING SCREEN
+			Debug.Log("Loading State OnUpdate");			
 			SendTrigger((int)StateTriggers.LOADING_COMPLETED);
 		}
 

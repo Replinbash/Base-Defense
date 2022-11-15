@@ -18,21 +18,17 @@ namespace BaseShooter.Component
 		public void CallUptade()
 		{
 			if (Input.GetMouseButtonDown(0))
-			{
-				Debug.Log("Touch Enter");
+			{				
 				OnScreenTouchEnter?.Invoke();
 			}
 
 			if (Input.GetMouseButton(0))
-			{
-				Debug.Log("Mouse's last position: " + Input.mousePosition);
-
+			{	
 				OnScreenTouch?.Invoke();
 			}
 
 			if (Input.GetMouseButtonUp(0))
-			{
-				Debug.Log("Touch Exit");
+			{				
 				OnScreenTouchExit?.Invoke();
 			}
 		}		

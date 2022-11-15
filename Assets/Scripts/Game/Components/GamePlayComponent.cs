@@ -6,28 +6,31 @@ namespace BaseShooter.Component
 	public class GamePlayComponent : MonoBehaviour, IComponent, IUpdatable
 	{
 		[SerializeField] private PlayerController _player;
-		private InputSystem _inputSystem;
+		private ComponentContainer _componentContainer;
 
 		public void Initilaze(ComponentContainer componentContainer)
 		{
 			Debug.Log("<color=green>GamePlayComponent initialized!</color>");
-			_inputSystem = componentContainer.GetComponent("InputSystem") as InputSystem;
+			_componentContainer = componentContainer;
 
+			CreatePlayer();
 		}
+
+
 
 		public void CallUptade()
 		{
 			Debug.Log("<color=cyan>GamePlayComponent is on!</color>");
-			_inputSystem.CallUptade();
 			_player.CallUptade();
 		}
 
-		public void OnEnter()
+		private void CreatePlayer()
 		{
-
+			_player.ComponentContaier = _componentContainer;
+			_player.Init();
 		}
 
-		
+
 	}
 
 }
