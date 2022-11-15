@@ -4,24 +4,28 @@ namespace BaseShooter.State
 	using BaseShooter.Component;
 	using BaseShooter.Enum;
 	using BaseShooter.HFSM;
-	using System;
 	using UnityEngine;
-	using UnityEngine.Events;
 
 	public class UpgradeState : StateMachine
 	{
-		private PlayerAnimationComponent _playerAnimationComponent;
+		private PlayerAnimationHandler _playerAnimationHandler;
 
 		public UpgradeState(ComponentContainer componentContainer)
 		{
-			_playerAnimationComponent = componentContainer.GetComponent("PlayerAnimationComponent") as PlayerAnimationComponent;
+			_playerAnimationHandler = componentContainer.GetComponent("PlayerAnimationHandler") as PlayerAnimationHandler;
 		}
 
-		// TODO : Enter the run anim state
+		// TODO : Enter the run anim state, 
 		protected override void OnEnter()
 		{
-			_playerAnimationComponent.SetPlayerState(PlayerStateTriggers.Run);
-		}		
+			Debug.Log("UpgradeState Enter");
+			_playerAnimationHandler.SetPlayerState(PlayerStateTriggers.Run);
+		}
+		
+		public void GoToBattle()
+		{
+			SendTrigger((int)StateTriggers.GO_TO_BATTLE_REQUEST);
+		}
 
 		protected override void OnExit()
 		{

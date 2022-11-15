@@ -5,7 +5,7 @@
 	using UnityEngine;
 	using UnityEngine.Events;
 
-	public class PlayerAnimationComponent : MonoBehaviour, IComponent, IUpdatable, IInitializable
+	public class PlayerAnimationHandler : IComponent, IUpdatable, IInitializable
 	{
 		public event UnityAction OnFightAnimation = delegate { };
 		public event UnityAction OnRunAnimation = delegate { };
@@ -14,13 +14,17 @@
 
 		public void Initilaze(ComponentContainer componentContainer)
 		{
-			Debug.Log("<color=green>PlayerAnimationComponent initialized!</color>");
+			Debug.Log("<color=green>PlayerAnimationHandler initialized!</color>");
 			Init();
 		}
 
 		public void Init()
 		{
-			_animator = GetComponent<Animator>();
+			
+		}
+		public void CallUptade()
+		{
+
 		}
 
 		public void SetPlayerState(PlayerStateTriggers playerState)
@@ -33,22 +37,23 @@
 				case PlayerStateTriggers.Fight:
 					_playerState = PlayerStateTriggers.Fight;
 					break;
-
+				case PlayerStateTriggers.Death:
+					_playerState = PlayerStateTriggers.Death;
+					break;
 			}
-		}
+		}		
 
-			
-
-		public void CallUptade()
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public void ChangeAnimationState(bool isInvoke)
+		public void HandleAnimation(bool isInvoke)
 		{
 			_animator.SetBool(_playerState.ToString(), isInvoke);
 		}
 
-		
+		public Animator Animator
+		{
+			get => _animator;
+			set => _animator = value;
+		}
+
+
 	}
 }

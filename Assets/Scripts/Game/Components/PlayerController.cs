@@ -1,20 +1,21 @@
 namespace BaseShooter.Component
 {
 	using BaseShooter.Base.Component;
-	using BaseShooter.Enum;
-	using System;
 	using UnityEngine;
+	using UnityEngine.Events;
 
-	public class PlayerController : MonoBehaviour, IUpdatable, IInitializable, IDestructible
+	public class PlayerController : MonoBehaviour, IUpdatable, IFixedUpdatable, IInitializable, IDestructible
 	{
+		public event UnityAction<bool> OnMovementEvent = delegate { };
+
 		private ComponentContainer _compenentContainer;
 		private InputSystem _inputSystem;
-		private PlayerAnimationComponent _playerAnimationComponent;
+		private PlayerMovementComponent _playerMovementComponent;
 
 		public void Init()
 		{
-			_inputSystem = _compenentContainer.GetComponent("InputSystem") as InputSystem;
-			_playerAnimationComponent = _compenentContainer.GetComponent("PlayerAnimationComponent") as PlayerAnimationComponent;
+			_inputSystem = _compenentContainer.GetComponent("InputSystem") as InputSystem;			
+			_playerMovementComponent = _compenentContainer.GetComponent("PlayerMovementComponent") as PlayerMovementComponent;			
 
 			InjectInputSystem();			
 		}
@@ -22,6 +23,11 @@ namespace BaseShooter.Component
 		public void CallUptade()
 		{
 			_inputSystem.CallUptade();
+		}
+
+		public void CallFixedUptade()
+		{
+			_playerMovementComponent.CallFixedUptade();
 		}
 
 		public void InjectInputSystem()
@@ -38,14 +44,12 @@ namespace BaseShooter.Component
 
 		private void OnPlay()
 		{
-			Debug.Log("Mouse's last position: " + Input.mousePosition);
-			_playerAnimationComponent.ChangeAnimationState(true);
+			OnMovementEvent?.Invoke(true);
 		}
 
 		private void OnExit()
 		{
-			Debug.Log("Touch Exit");
-			_playerAnimationComponent.ChangeAnimationState(false);
+			OnMovementEvent?.Invoke(false);
 		}
 
 		public void OnDestruct()
@@ -53,7 +57,7 @@ namespace BaseShooter.Component
 			_inputSystem.OnScreenTouchEnter -= OnEnter;
 			_inputSystem.OnScreenTouch -= OnPlay;
 			_inputSystem.OnScreenTouchExit -= OnExit;
-		}
+		}		
 
 		public ComponentContainer ComponentContaier
 		{

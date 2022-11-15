@@ -12,15 +12,22 @@ namespace BaseShooter
 		private ComponentContainer _componentContainer;
 		private GamePlayComponent _gamePlayComponent;
 		private InputSystem _inputSystem;
-		private PlayerAnimationComponent _playerAnimationComponent;
+		private PlayerAnimationHandler _playerAnimationHandler;
+		private PlayerMovementComponent _playerMovementComponent;
+		private Joystick _joystick;
 
-		private void Awake() => _componentContainer = new ComponentContainer();
+		private void Awake()
+		{
+			_componentContainer = new ComponentContainer();
+		}
 
 		private void Start()
 		{
 			CreateGamePlayComponent();
 			CreateInputSystem();
-			CreatePlayerAnimationController();
+			CreateJoystick();
+			CreatePlayerAnimationHandler();
+			CreateMovementComponent();
 
 			InitializeComponents();
 			CreateAppState();
@@ -34,7 +41,7 @@ namespace BaseShooter
 
 		private void OnDestroy()
 		{
-			
+
 		}
 
 		private void CreateGamePlayComponent()
@@ -49,17 +56,30 @@ namespace BaseShooter
 			_componentContainer.AddComponent("InputSystem", _inputSystem);
 		}
 
-		private void CreatePlayerAnimationController()
+		private void CreateJoystick()
 		{
-			_playerAnimationComponent = FindObjectOfType<PlayerAnimationComponent>();
-			_componentContainer.AddComponent("PlayerAnimationComponent", _playerAnimationComponent);
+			_joystick = FindObjectOfType<Joystick>();
+			_componentContainer.AddComponent("Joystick", _joystick);
+		}
+
+		private void CreatePlayerAnimationHandler()
+		{
+			_playerAnimationHandler = new PlayerAnimationHandler();
+			_componentContainer.AddComponent("PlayerAnimationHandler", _playerAnimationHandler);
+		}
+
+		private void CreateMovementComponent()
+		{
+			_playerMovementComponent = FindObjectOfType<PlayerMovementComponent>();
+			_componentContainer.AddComponent("PlayerMovementComponent", _playerMovementComponent);
 		}
 
 		private void InitializeComponents()
 		{
 			_inputSystem.Initilaze(_componentContainer);
 			_gamePlayComponent.Initilaze(_componentContainer);
-			_playerAnimationComponent.Initilaze(_componentContainer);	
+			_playerAnimationHandler.Initilaze(_componentContainer);
+			_playerMovementComponent.Initilaze(_componentContainer);
 		}
 
 		private void CreateAppState() => _appState = new AppState(_componentContainer);

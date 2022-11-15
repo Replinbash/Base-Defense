@@ -16,12 +16,15 @@ namespace BaseShooter.Component
 			CreatePlayer();
 		}
 
-
-
 		public void CallUptade()
 		{
 			Debug.Log("<color=cyan>GamePlayComponent is on!</color>");
 			_player.CallUptade();
+		}
+
+		private void FixedUpdate()
+		{
+			_player.CallFixedUptade();	
 		}
 
 		private void CreatePlayer()
