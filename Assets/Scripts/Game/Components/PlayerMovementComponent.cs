@@ -21,14 +21,15 @@ namespace BaseShooter.Component
 			Debug.Log("<color=green>PlayerMovementComponent initialized!</color>");
 			_playerAnimationHandler = componentContainer.GetComponent("PlayerAnimationHandler") as PlayerAnimationHandler;
 			_joystick = componentContainer.GetComponent("Joystick") as Joystick;
+			_playerController = GetComponent<PlayerController>();
+			_rigidbody = GetComponent<Rigidbody>();
+			_animator = GetComponent<Animator>();
+
 			Init();			
 		}
 
 		public void Init()
-		{
-			_rigidbody = GetComponent<Rigidbody>();
-			_animator = GetComponent<Animator>();
-			_playerController = GetComponent<PlayerController>();
+		{					
 			_playerAnimationHandler.Animator = _animator;
 			_playerController.OnMovementEvent += SetMovement;
 		}
