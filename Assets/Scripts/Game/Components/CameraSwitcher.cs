@@ -37,21 +37,16 @@ namespace BaseShooter.Component
 		public void Register(CinemachineVirtualCamera cam)
 		{
 			cameras.Add(cam);
-			Debug.Log("Camera registered: " + cam);
+			Debug.Log($"<color=yellow>Camera registered: {cam}</color>");
 		}
 
 		public void Unregister(CinemachineVirtualCamera cam)
 		{
 			cameras.Remove(cam);
-			Debug.Log("Camera unregistered: " + cam);
+			Debug.Log($"<color=red>Camera unregistered: {cam}</color>");
 		}
 
-		public CinemachineVirtualCamera ActiveCamera
-		{
-			get => _activeCamera;
-			set => _activeCamera = value;
-		}
-
+		public CinemachineVirtualCamera ActiveCamera => _activeCamera;
 	}
 }
 

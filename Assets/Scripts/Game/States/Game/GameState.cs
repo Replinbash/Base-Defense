@@ -29,7 +29,7 @@ namespace BaseShooter.State
 
 		protected override void OnEnter()
 		{
-			Debug.Log("GameState OnEnter");
+			Debug.Log("<color=cyan>GameState OnEnter</color>");
 		}
 
 		protected override void OnUpdate()
@@ -39,7 +39,7 @@ namespace BaseShooter.State
 
 		protected override void OnExit()
 		{
-			Debug.Log("GameState OnExit");
+			Debug.Log("<color=cyan>GameState OnExit</color>");
 		}
 	}
 

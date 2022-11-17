@@ -3,6 +3,7 @@ namespace BaseShooter
 	using BaseShooter.Base.Component;
 	using BaseShooter.Component;
 	using BaseShooter.State;
+	using Unity.VisualScripting;
 	using UnityEngine;
 
 	public class MainComponent : MonoBehaviour
@@ -13,9 +14,11 @@ namespace BaseShooter
 		private InputSystem _inputSystem;
 		private PlayerAnimationHandler _playerAnimationHandler;
 		private PlayerMovementComponent _playerMovementComponent;
+		private PlayerColliderComponent _playerColliderComponent;
 		private Joystick _joystick;
 		private CameraSwitcher _cameraSwitcher;
-		private GameCamera _camera;
+		private CameraContainer _cameraContainer;
+
 		private TestCamera _testCamera;
 
 
@@ -30,9 +33,10 @@ namespace BaseShooter
 			CreateInputSystem();
 			CreateJoystick();
 			CreatePlayerAnimationHandler();
-			CreateMovementComponent();
+			CreatePlayerMovementComponent();
+			CreatePlayerColliderComponent();
 			CreateCameraSwitcher();
-			CreateCamera();
+			CreateCameraContainer();
 			CreateTestCamera();
 
 
@@ -75,10 +79,17 @@ namespace BaseShooter
 			_componentContainer.AddComponent("PlayerAnimationHandler", _playerAnimationHandler);
 		}
 
-		private void CreateMovementComponent()
+		private void CreatePlayerMovementComponent()
 		{
 			_playerMovementComponent = FindObjectOfType<PlayerMovementComponent>();
 			_componentContainer.AddComponent("PlayerMovementComponent", _playerMovementComponent);
+		}
+
+		private void CreatePlayerColliderComponent()
+		{
+			_playerColliderComponent = FindObjectOfType<PlayerColliderComponent>();
+			_componentContainer.AddComponent("PlayerColliderComponent", _playerColliderComponent);
+
 		}
 
 		private void CreateCameraSwitcher()
@@ -87,10 +98,10 @@ namespace BaseShooter
 			_componentContainer.AddComponent("CameraSwitcher", _cameraSwitcher);
 		}
 
-		private void CreateCamera()
+		private void CreateCameraContainer()
 		{
-			_camera = FindObjectOfType<GameCamera>();
-			_componentContainer.AddComponent("GameCamera", _camera);
+			_cameraContainer = FindObjectOfType<CameraContainer>();
+			_componentContainer.AddComponent("CameraContainer", _cameraContainer);
 		}
 
 		private void CreateTestCamera()
@@ -105,9 +116,10 @@ namespace BaseShooter
 			_gamePlayComponent.Initilaze(_componentContainer);
 			_playerAnimationHandler.Initilaze(_componentContainer);
 			_playerMovementComponent.Initilaze(_componentContainer);
+			_playerColliderComponent.Initilaze(_componentContainer);
 			_cameraSwitcher.Initilaze(_componentContainer);	
+			_cameraContainer.Initilaze(_componentContainer);	
 			_testCamera.Initilaze(_componentContainer);
-			_camera.Initilaze(_componentContainer);	
 		}
 
 		private void CreateAppState() => _appState = new AppState(_componentContainer);

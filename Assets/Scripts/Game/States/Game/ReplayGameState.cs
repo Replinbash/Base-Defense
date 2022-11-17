@@ -14,12 +14,12 @@ namespace BaseShooter.State
 
 		protected override void OnEnter()
 		{
-			Debug.Log("ReplayGameState OnEnter");
+			Debug.Log("<color=red>ReplayGameState OnEnter</color>");
 		}
 
 		protected override void OnExit()
 		{
-			Debug.Log("ReplayGameState OnEnter");
+			Debug.Log("<color=red>ReplayGameState OnEnter</color>");
 		}
 	}
 

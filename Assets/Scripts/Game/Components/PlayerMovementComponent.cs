@@ -11,6 +11,8 @@ namespace BaseShooter.Component
 		private PlayerAnimationHandler _playerAnimationHandler;
 		private PlayerController _playerController;
 		private Joystick _joystick;
+
+		[Header("Player Properties")]
 		private Rigidbody _rigidbody;
 		private Animator _animator;		
 	

@@ -13,19 +13,19 @@ namespace BaseShooter.State
 
 		protected override void OnEnter()
 		{
-			Debug.Log("Loading State OnEnter");
+			Debug.Log("<color=cyan>Loading State OnEnter</color>");
 		}
 
 		//TODO: LOADING SCREEN
 		protected override void OnUpdate()
 		{
-			Debug.Log("Loading State OnUpdate");			
+			Debug.Log("<color=cyan>Loading State OnUpdate</color>");			
 			SendTrigger((int)StateTriggers.LOADING_COMPLETED);
 		}
 
 		protected override void OnExit()
 		{
-			Debug.Log("Loading State OnExit");
+			Debug.Log("<color=cyan>Loading State OnExit</color>");
 		}
 	}
 

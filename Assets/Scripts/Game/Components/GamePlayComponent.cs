@@ -18,7 +18,6 @@ namespace BaseShooter.Component
 
 		public void CallUptade()
 		{
-			Debug.Log("<color=cyan>GamePlayComponent is on!</color>");
 			_player.CallUptade();
 		}
 

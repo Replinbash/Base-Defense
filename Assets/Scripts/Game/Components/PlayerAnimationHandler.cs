@@ -7,8 +7,6 @@
 
 	public class PlayerAnimationHandler : IComponent, IUpdatable, IInitializable
 	{
-		public event UnityAction OnFightAnimation = delegate { };
-		public event UnityAction OnRunAnimation = delegate { };
 		private PlayerStateTriggers _playerState;
 		private Animator _animator;
 

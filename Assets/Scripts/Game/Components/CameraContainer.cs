@@ -4,27 +4,34 @@ namespace BaseShooter.Component
 	using Cinemachine;
 	using UnityEngine;
 
-	public class GameCamera : MonoBehaviour, IComponent, IDestructible, ICamera, IInitializable
+	public class CameraContainer : MonoBehaviour, IComponent, IDestructible, ICamera, IInitializable
 	{
+		[SerializeField] private CinemachineVirtualCamera _gameCamera;
+		[SerializeField] private CinemachineVirtualCamera _turretCamera;
+		
 		private CameraSwitcher _cameraSwitcher;
-		private CinemachineVirtualCamera _camera;
+
+		public CinemachineVirtualCamera GameCamera => _gameCamera;
+		public CinemachineVirtualCamera TurretCamera => _turretCamera;
 
 		public void Initilaze(ComponentContainer componentContainer)
 		{
+			Debug.Log("<color=green>CameraContainer initialized!</color>");
 			_cameraSwitcher = componentContainer.GetComponent("CameraSwitcher") as CameraSwitcher;
-			_camera = GetComponent<CinemachineVirtualCamera>();
 
 			Init();			
 		}
 
 		public void Init()
 		{			
-			RegisterCamera(_camera);
+			RegisterCamera(_gameCamera);
+			RegisterCamera(_turretCamera);
 		}
 
 		public void OnDestruct()
 		{
-			UnregisterCamera(_camera);	
+			UnregisterCamera(_gameCamera);	
+			UnregisterCamera(_turretCamera);
 		}
 
 		public void RegisterCamera(CinemachineVirtualCamera cam)
