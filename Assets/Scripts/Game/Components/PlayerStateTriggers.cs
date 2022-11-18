@@ -1,9 +1,9 @@
-﻿namespace BaseShooter.Enum
+﻿namespace BaseDefense.Enum
 {
 	public enum PlayerStateTriggers
 	{		
 		Run,
-		Fight,
+		Attack,
 		Death
 	}
 }

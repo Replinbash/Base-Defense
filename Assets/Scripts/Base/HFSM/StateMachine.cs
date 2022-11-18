@@ -1,4 +1,4 @@
-namespace BaseShooter.HFSM
+namespace BaseDefense.HFSM
 {
 	using System;
 	using System.Collections.Generic;

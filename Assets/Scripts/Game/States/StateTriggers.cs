@@ -1,4 +1,4 @@
-namespace BaseShooter.State
+namespace BaseDefense.State
 {
 	public enum StateTriggers
 	{

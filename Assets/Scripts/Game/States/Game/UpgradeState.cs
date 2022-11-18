@@ -1,9 +1,9 @@
-namespace BaseShooter.State
+namespace BaseDefense.State
 {
-	using BaseShooter.Base.Component;
-	using BaseShooter.Component;
-	using BaseShooter.Enum;
-	using BaseShooter.HFSM;
+	using BaseDefense.Base.Component;
+	using BaseDefense.Component;
+	using BaseDefense.Enum;
+	using BaseDefense.HFSM;
 	using UnityEngine;
 
 	public class UpgradeState : StateMachine
@@ -15,10 +15,16 @@ namespace BaseShooter.State
 		{
 			_playerAnimationHandler = componentContainer.GetComponent("PlayerAnimationHandler") as PlayerAnimationHandler;
 			_playerColliderComponent = componentContainer.GetComponent("PlayerColliderComponent") as PlayerColliderComponent;
+
+			// Gun Shop State
+			// Turret State
+			// Booster State
+			// Mine State
+			// Military state
 		}
 
 		// TODO: Enable healthbar and gun
-		// TODO: Set enemy agroo
+		// TODO: Set enemy aggro 
 		protected override void OnEnter()
 		{
 			Debug.Log("<color=cyan>UpgradeState Enter</color>");

@@ -1,4 +1,4 @@
-﻿namespace BaseShooter.Base.Component
+﻿namespace BaseDefense.Base.Component
 {
 	public interface IUpdatable
 	{

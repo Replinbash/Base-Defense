@@ -1,7 +1,7 @@
-namespace BaseShooter.Component
+namespace BaseDefense.Component
 {
 	using UnityEngine;
-	using BaseShooter.Base.Component;
+	using BaseDefense.Base.Component;
 	using UnityEngine.Events;
 
 	public class PlayerColliderComponent : MonoBehaviour, IComponent

@@ -1,9 +1,9 @@
-namespace BaseShooter.State
+namespace BaseDefense.State
 {
-	using BaseShooter.Base.Component;
-	using BaseShooter.Component;
-	using BaseShooter.Enum;
-	using BaseShooter.HFSM;
+	using BaseDefense.Base.Component;
+	using BaseDefense.Component;
+	using BaseDefense.Enum;
+	using BaseDefense.HFSM;
 	using UnityEngine;
 
 	public class BattleState : StateMachine
@@ -15,14 +15,16 @@ namespace BaseShooter.State
 		{
 			_playerAnimationHandler = componentContainer.GetComponent("PlayerAnimationHandler") as PlayerAnimationHandler;
 			_playerColliderComponent = componentContainer.GetComponent("PlayerColliderComponent") as PlayerColliderComponent;
+
+
 		}
 
 		// TODO: Disable health bar and gun
-		// TODO: Set enemy agroo
+		// TODO: Set enemy aggro
 		protected override void OnEnter()
 		{
 			Debug.Log("<color=red>BattleState OnEnter</color>");
-			_playerAnimationHandler.SetPlayerState(PlayerStateTriggers.Fight);
+			_playerAnimationHandler.SetPlayerState(PlayerStateTriggers.Attack);
 			_playerColliderComponent.OnUpgradeState += GoToUpgradeState;
 		}
 

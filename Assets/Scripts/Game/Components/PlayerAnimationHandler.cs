@@ -1,9 +1,8 @@
-﻿namespace BaseShooter.Component
+﻿namespace BaseDefense.Component
 {
-	using BaseShooter.Base.Component;
-	using BaseShooter.Enum;
+	using BaseDefense.Base.Component;
+	using BaseDefense.Enum;
 	using UnityEngine;
-	using UnityEngine.Events;
 
 	public class PlayerAnimationHandler : IComponent, IUpdatable, IInitializable
 	{
@@ -32,8 +31,8 @@
 				case PlayerStateTriggers.Run:
 					_playerState = PlayerStateTriggers.Run;
 					break;
-				case PlayerStateTriggers.Fight:
-					_playerState = PlayerStateTriggers.Fight;
+				case PlayerStateTriggers.Attack:
+					_playerState = PlayerStateTriggers.Attack;
 					break;
 				case PlayerStateTriggers.Death:
 					_playerState = PlayerStateTriggers.Death;

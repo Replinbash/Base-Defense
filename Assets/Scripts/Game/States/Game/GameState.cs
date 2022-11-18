@@ -1,8 +1,8 @@
-namespace BaseShooter.State
+namespace BaseDefense.State
 {
-	using BaseShooter.Base.Component;
-	using BaseShooter.Component;
-	using BaseShooter.HFSM;
+	using BaseDefense.Base.Component;
+	using BaseDefense.Component;
+	using BaseDefense.HFSM;
 	using UnityEngine;
 
 	public class GameState : StateMachine
@@ -27,6 +27,7 @@ namespace BaseShooter.State
 
 		}
 
+		// TODO: Show Tutorial
 		protected override void OnEnter()
 		{
 			Debug.Log("<color=cyan>GameState OnEnter</color>");

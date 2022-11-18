@@ -1,8 +1,6 @@
-namespace BaseShooter.Base.Component
+namespace BaseDefense.Base.Component
 {
-	using System.Collections;
 	using System.Collections.Generic;
-	using UnityEngine;
 
 	public class ComponentContainer
 	{

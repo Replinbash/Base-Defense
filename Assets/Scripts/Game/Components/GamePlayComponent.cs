@@ -1,6 +1,6 @@
-namespace BaseShooter.Component
+namespace BaseDefense.Component
 {
-	using BaseShooter.Base.Component;
+	using BaseDefense.Base.Component;
 	using UnityEngine;
 
 	public class GamePlayComponent : MonoBehaviour, IComponent, IUpdatable

@@ -1,6 +1,6 @@
 using Cinemachine;
 
-namespace BaseShooter.Component
+namespace BaseDefense.Component
 {
 	public interface ICamera
 	{

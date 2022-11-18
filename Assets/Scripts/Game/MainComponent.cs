@@ -1,8 +1,8 @@
-namespace BaseShooter
+namespace BaseDefense
 {
-	using BaseShooter.Base.Component;
-	using BaseShooter.Component;
-	using BaseShooter.State;
+	using BaseDefense.Base.Component;
+	using BaseDefense.Component;
+	using BaseDefense.State;
 	using Unity.VisualScripting;
 	using UnityEngine;
 

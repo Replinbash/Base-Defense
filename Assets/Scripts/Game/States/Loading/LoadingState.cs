@@ -1,7 +1,7 @@
-namespace BaseShooter.State
+namespace BaseDefense.State
 {
-	using BaseShooter.Base.Component;
-	using BaseShooter.HFSM;
+	using BaseDefense.Base.Component;
+	using BaseDefense.HFSM;
 	using UnityEngine;
 	
 	public class LoadingState : StateMachine
