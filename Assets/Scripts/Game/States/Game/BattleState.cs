@@ -15,8 +15,6 @@ namespace BaseDefense.State
 		{
 			_playerAnimationHandler = componentContainer.GetComponent("PlayerAnimationHandler") as PlayerAnimationHandler;
 			_playerColliderComponent = componentContainer.GetComponent("PlayerColliderComponent") as PlayerColliderComponent;
-
-
 		}
 
 		// TODO: Disable health bar and gun
