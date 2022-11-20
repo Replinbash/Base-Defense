@@ -1,6 +1,7 @@
 namespace BaseDefense.Component
 {
 	using BaseDefense.Base.Component;
+	using BaseDefense.Interface;
 	using Cinemachine;
 	using UnityEngine;
 

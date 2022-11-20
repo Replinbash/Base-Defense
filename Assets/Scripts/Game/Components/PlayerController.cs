@@ -57,9 +57,10 @@ namespace BaseDefense.Component
 			_inputSystem.OnScreenTouchEnter -= OnEnter;
 			_inputSystem.OnScreenTouch -= OnPlay;
 			_inputSystem.OnScreenTouchExit -= OnExit;
+			_playerMovementComponent.OnDestruct();
 		}		
 
-		public ComponentContainer ComponentContaier
+		public ComponentContainer ComponentContainer
 		{
 			get => _compenentContainer;
 			set => _compenentContainer = value;

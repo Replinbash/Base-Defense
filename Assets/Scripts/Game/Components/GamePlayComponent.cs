@@ -7,10 +7,12 @@ namespace BaseDefense.Component
 	{
 		[SerializeField] private PlayerController _player;
 		private ComponentContainer _componentContainer;
+		private BulletFactory _bulletFactory;
 
 		public void Initilaze(ComponentContainer componentContainer)
 		{
 			Debug.Log("<color=green>GamePlayComponent initialized!</color>");
+			_bulletFactory = new BulletFactory();
 			_componentContainer = componentContainer;
 
 			CreatePlayer();
@@ -19,6 +21,8 @@ namespace BaseDefense.Component
 		public void CallUptade()
 		{
 			_player.CallUptade();
+			_bulletFactory.UptadeBullets();
+
 		}
 
 		private void FixedUpdate()
@@ -28,8 +32,16 @@ namespace BaseDefense.Component
 
 		private void CreatePlayer()
 		{
-			_player.ComponentContaier = _componentContainer;
+			_player.ComponentContainer = _componentContainer;
 			_player.Init();
+
+		}
+
+		// TODO: Inject replay game state
+		public void RestartGame()
+		{
+			_player.OnDestruct();
+			_bulletFactory.OnDestruct();
 		}
 
 

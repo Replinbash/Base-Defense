@@ -1,5 +1,6 @@
 namespace BaseDefense.Base.ObjectPool
 {
+	using BaseDefense.Component;
 	using UnityEngine;
 
 	public class SampleObject : MonoBehaviour, IPoolable
@@ -20,7 +21,7 @@ namespace BaseDefense.Base.ObjectPool
 			//TODO: set initial colors
 		}
 
-		public void InjectBulletFactory()
+		public void InjectBulletFactory(BulletFactory bulletFactory)
 		{
 			
 		}
