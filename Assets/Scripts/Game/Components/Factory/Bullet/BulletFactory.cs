@@ -4,7 +4,6 @@ namespace BaseDefense.Component
 	using BaseDefense.Base.ObjectPool;
 	using BaseDefense.Interface;
 	using System.Collections.Generic;
-	using UnityEngine;
 
 	public class BulletFactory : IBulletFactory, IDestructible
 	{
