@@ -17,8 +17,14 @@ namespace BaseDefense.State
 			_playerColliderComponent = componentContainer.GetComponent("PlayerColliderComponent") as PlayerColliderComponent;
 		}
 
+		// Battle Idle State
+		// Money Collect State
+		// Survivor State
+		// Trap State
+
 		// TODO: Disable health bar and gun
 		// TODO: Set enemy aggro
+		// TODO: Set aim at the enemy
 		protected override void OnEnter()
 		{
 			Debug.Log("<color=red>BattleState OnEnter</color>");

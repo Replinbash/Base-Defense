@@ -21,7 +21,7 @@ namespace BaseDefense.State
 
 			_loadingState.AddTransition(_loadingState, _gameState, (int)StateTriggers.LOADING_COMPLETED);
 			_gameState.AddTransition(_gameState, _replayGameState, (int)StateTriggers.REPLAY_GAME_REQUEST);
-			_replayGameState.AddTransition(_replayGameState, _gameState, (int)StateTriggers.RESTART_GAME_REQUEST);
+			_replayGameState.AddTransition(_replayGameState, _gameState, (int)StateTriggers.PLAY_GAME_REQUEST);
 		}
 	}
 }

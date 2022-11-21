@@ -24,12 +24,12 @@ namespace BaseDefense.State
 
 			this.AddTransition(_upgradeState, _battleState, (int)StateTriggers.GO_TO_BATTLE_REQUEST);
 			this.AddTransition(_battleState, _upgradeState, (int)StateTriggers.GO_TO_UPGRADE_REQUEST);
-
 		}
 
 		// TODO: Show Tutorial
 		protected override void OnEnter()
 		{
+			SetDefaultState();
 			Debug.Log("<color=cyan>GameState OnEnter</color>");
 		}
 

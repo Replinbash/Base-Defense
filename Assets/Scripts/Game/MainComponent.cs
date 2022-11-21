@@ -10,6 +10,7 @@ namespace BaseDefense
 	{
 		private AppState _appState;
 		private ComponentContainer _componentContainer;
+		private GameEventContainer _gameEventContainer;
 		private GamePlayComponent _gamePlayComponent;
 		private InputSystem _inputSystem;
 		private PlayerAnimationHandler _playerAnimationHandler;
@@ -30,6 +31,7 @@ namespace BaseDefense
 		private void Start()
 		{
 			CreateGamePlayComponent();
+			CreateGameEventContainer();
 			CreateInputSystem();
 			CreateJoystick();
 			CreatePlayerAnimationHandler();
@@ -59,6 +61,12 @@ namespace BaseDefense
 		{
 			_gamePlayComponent = FindObjectOfType<GamePlayComponent>();
 			_componentContainer.AddComponent("GamePlayComponent", _gamePlayComponent);
+		}
+
+		private void CreateGameEventContainer()
+		{
+			_gameEventContainer = new GameEventContainer();
+			_componentContainer.AddComponent("GameEventContainer", _gameEventContainer);
 		}
 
 		private void CreateInputSystem()
@@ -114,6 +122,7 @@ namespace BaseDefense
 		{
 			_inputSystem.Initilaze(_componentContainer);
 			_gamePlayComponent.Initilaze(_componentContainer);
+			_gameEventContainer.Initilaze(_componentContainer);
 			_playerAnimationHandler.Initilaze(_componentContainer);
 			_playerMovementComponent.Initilaze(_componentContainer);
 			_playerColliderComponent.Initilaze(_componentContainer);
