@@ -3,14 +3,13 @@ namespace BaseDefense
 	using BaseDefense.Base.Component;
 	using BaseDefense.Component;
 	using BaseDefense.State;
-	using Unity.VisualScripting;
 	using UnityEngine;
 
 	public class MainComponent : MonoBehaviour
 	{
 		private AppState _appState;
 		private ComponentContainer _componentContainer;
-		private GameEventContainer _gameEventContainer;
+		private StateEventContainer _stateEventContainer;
 		private GamePlayComponent _gamePlayComponent;
 		private InputSystem _inputSystem;
 		private PlayerAnimationHandler _playerAnimationHandler;
@@ -65,8 +64,8 @@ namespace BaseDefense
 
 		private void CreateGameEventContainer()
 		{
-			_gameEventContainer = new GameEventContainer();
-			_componentContainer.AddComponent("GameEventContainer", _gameEventContainer);
+			_stateEventContainer = new StateEventContainer();
+			_componentContainer.AddComponent("StateEventContainer", _stateEventContainer);
 		}
 
 		private void CreateInputSystem()
@@ -122,7 +121,7 @@ namespace BaseDefense
 		{
 			_inputSystem.Initilaze(_componentContainer);
 			_gamePlayComponent.Initilaze(_componentContainer);
-			_gameEventContainer.Initilaze(_componentContainer);
+			_stateEventContainer.Initilaze(_componentContainer);
 			_playerAnimationHandler.Initilaze(_componentContainer);
 			_playerMovementComponent.Initilaze(_componentContainer);
 			_playerColliderComponent.Initilaze(_componentContainer);
