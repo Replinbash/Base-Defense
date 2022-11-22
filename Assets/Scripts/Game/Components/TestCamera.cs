@@ -7,8 +7,7 @@ namespace BaseDefense.Component
 
 	[RequireComponent(typeof(BoxCollider), typeof(Rigidbody))]
 	public class TestCamera : MonoBehaviour, IComponent
-	{
-		public event UnityAction ReturnUpgradeIdleEvent = delegate { };
+	{		
 
 		[SerializeField] private Vector3 _boxSize;
 
@@ -17,14 +16,14 @@ namespace BaseDefense.Component
 
 		private CameraSwitcher _cameraSwitcher;
 		private CameraContainer _cameraContainer;
-		private GameEventContainer _gameEventContainer;
+		private StateEventContainer _stateEventContainer;
 
 		public void Initilaze(ComponentContainer componentContainer)
 		{
 			Debug.Log("<color=green>TestCamera initialized!</color>");
 			_cameraSwitcher = componentContainer.GetComponent("CameraSwitcher") as CameraSwitcher;
 			_cameraContainer = componentContainer.GetComponent("CameraContainer") as CameraContainer;
-			_gameEventContainer = componentContainer.GetComponent("GameEventContainer") as GameEventContainer;
+			_stateEventContainer = componentContainer.GetComponent("StateEventContainer") as StateEventContainer;
 		}
 
 		void Start()
@@ -50,7 +49,7 @@ namespace BaseDefense.Component
 				if (!_cameraSwitcher.IsActiveCamera(_cameraContainer.TurretCamera))
 				{
 					_cameraSwitcher.SwitchCamera(_cameraContainer.TurretCamera);
-					_gameEventContainer.TurretControl();
+					_stateEventContainer.TurretControl();
 				}
 			}
 		}
@@ -62,7 +61,7 @@ namespace BaseDefense.Component
 				if (!_cameraSwitcher.IsActiveCamera(_cameraContainer.GameCamera))
 				{
 					_cameraSwitcher.SwitchCamera(_cameraContainer.GameCamera);
-					ReturnUpgradeIdleEvent?.Invoke();
+					_stateEventContainer.ReturnUpgradeIdle();
 				}
 			}
 		}

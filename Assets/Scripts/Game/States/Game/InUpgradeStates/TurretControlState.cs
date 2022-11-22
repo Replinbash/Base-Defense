@@ -8,16 +8,18 @@ namespace BaseDefense.State
 	public class TurretControlState : StateMachine
 	{
 		private TestCamera _testCamera;
+		private StateEventContainer _stateEventContainer;
 
 		public TurretControlState(ComponentContainer compenentContainer)
 		{
 			_testCamera = compenentContainer.GetComponent("TestCamera") as TestCamera;
+			_stateEventContainer = compenentContainer.GetComponent("StateEventContainer") as StateEventContainer;
 		}
 
 		protected override void OnEnter()
 		{
 			Debug.Log("Turret Control State OnEnter!");
-			_testCamera.ReturnUpgradeIdleEvent += ReturnUpgradeIdle;
+			_stateEventContainer.ReturnUpgradeIdleEvent += ReturnUpgradeIdle;
 		}
 
 		private void ReturnUpgradeIdle()

@@ -7,16 +7,16 @@ namespace BaseDefense.State
 
 	public class UpgradeIdleState : StateMachine
 	{
-		private GameEventContainer _gameEventContainer;
+		private StateEventContainer _stateEventContainer;
 		public UpgradeIdleState(ComponentContainer componentContainer)
 		{
-			_gameEventContainer = componentContainer.GetComponent("GameEventContainer") as GameEventContainer;
+			_stateEventContainer = componentContainer.GetComponent("StateEventContainer") as StateEventContainer;
 		}
 
 		protected override void OnEnter()
 		{
 			Debug.Log("Base Idle State OnEnter!");
-			_gameEventContainer.TurretControlRequest += OnTurretControlRequest;
+			_stateEventContainer.TurretControlRequest += OnTurretControlRequest;
 		}
 
 		private void OnTurretControlRequest()
@@ -27,7 +27,7 @@ namespace BaseDefense.State
 		protected override void OnExit()
 		{
 			Debug.Log("Base Idle State OnExit!");
-			_gameEventContainer.TurretControlRequest -= OnTurretControlRequest;
+			_stateEventContainer.TurretControlRequest -= OnTurretControlRequest;
 		}
 	}
 }

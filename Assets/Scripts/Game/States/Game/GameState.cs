@@ -29,10 +29,10 @@ namespace BaseDefense.State
 		// TODO: Show Tutorial
 		protected override void OnEnter()
 		{
-			SetDefaultState();
 			Debug.Log("<color=cyan>GameState OnEnter</color>");
 		}
 
+		// TODO: Set spesific upgrade states update in this funch
 		protected override void OnUpdate()
 		{
 			_gamePlayComponent.CallUptade();
