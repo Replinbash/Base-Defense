@@ -27,7 +27,7 @@ namespace BaseDefense.State
 
 		[Header("Components")]
 		private PlayerAnimationHandler _playerAnimationHandler;
-		private PlayerColliderComponent _playerColliderComponent;
+		private StateEventContainer _stateEventContainer;
 
 		public UpgradeState(ComponentContainer componentContainer)
 		{
@@ -79,7 +79,7 @@ namespace BaseDefense.State
 			SetupGemCollectTransitions();
 
 			_playerAnimationHandler = componentContainer.GetComponent("PlayerAnimationHandler") as PlayerAnimationHandler;
-			_playerColliderComponent = componentContainer.GetComponent("PlayerColliderComponent") as PlayerColliderComponent;
+			_stateEventContainer = componentContainer.GetComponent("StateEventContainer") as StateEventContainer;
 		}
 
 		#region Transitions
@@ -168,7 +168,7 @@ namespace BaseDefense.State
 		{
 			Debug.Log("<color=cyan>UpgradeState Enter</color>");
 			_playerAnimationHandler.SetPlayerState(PlayerStateTriggers.Run);
-			_playerColliderComponent.OnFightState += GoToBattleState;
+			_stateEventContainer.OnFightStateEvent += GoToBattleState;
 		}
 		
 		public void GoToBattleState()
@@ -180,7 +180,7 @@ namespace BaseDefense.State
 		{
 			Debug.Log("<color=cyan>UpgradeState OnExit</color>");
 			_playerAnimationHandler.HandleAnimation(false);
-			_playerColliderComponent.OnFightState -= GoToBattleState;
+			_stateEventContainer.OnFightStateEvent -= GoToBattleState;
 		}
 	}
 

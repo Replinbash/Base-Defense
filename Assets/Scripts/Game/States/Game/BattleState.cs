@@ -18,7 +18,7 @@ namespace BaseDefense.State
 
 		[Header("Components")]
 		private PlayerAnimationHandler _playerAnimationHandler;
-		private PlayerColliderComponent _playerColliderComponent;
+		private StateEventContainer _stateEventContainer;
 
 		public BattleState(ComponentContainer componentContainer)
 		{
@@ -40,7 +40,7 @@ namespace BaseDefense.State
 			SetupEnemyAreaUpgradeTransitions();
 
 			_playerAnimationHandler = componentContainer.GetComponent("PlayerAnimationHandler") as PlayerAnimationHandler;
-			_playerColliderComponent = componentContainer.GetComponent("PlayerColliderComponent") as PlayerColliderComponent;
+			_stateEventContainer = componentContainer.GetComponent("StateEventContainer") as StateEventContainer;
 		}
 
 		#region Transitions
@@ -76,7 +76,7 @@ namespace BaseDefense.State
 		{
 			Debug.Log("<color=red>BattleState OnEnter</color>");
 			_playerAnimationHandler.SetPlayerState(PlayerStateTriggers.Attack);
-			_playerColliderComponent.OnUpgradeState += GoToUpgradeState;
+			_stateEventContainer.OnUpgradeStateEvent += GoToUpgradeState;
 		}
 
 		public void GoToUpgradeState()
@@ -88,7 +88,7 @@ namespace BaseDefense.State
 		{
 			Debug.Log("<color=red>BattleState OnExit</color>");
 			_playerAnimationHandler.HandleAnimation(false);
-			_playerColliderComponent.OnUpgradeState -= GoToUpgradeState;
+			_stateEventContainer.OnUpgradeStateEvent -= GoToUpgradeState;
 		}
 	}
 

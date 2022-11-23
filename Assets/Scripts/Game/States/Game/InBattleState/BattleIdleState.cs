@@ -16,11 +16,6 @@ namespace BaseDefense.State
 			Debug.Log("Battle Idle State OnEnter!");
 		}
 
-		protected override void OnUpdate()
-		{
-			Debug.Log("Battle Idle State OnUpdate!");
-		}
-
 		protected override void OnExit()
 		{
 			Debug.Log("Battle Idle State OnExit!");

@@ -20,11 +20,6 @@ namespace BaseDefense.Base.ObjectPool
 			//TODO: get components
 			//TODO: set initial colors
 		}
-
-		public void InjectBulletFactory(BulletFactory bulletFactory)
-		{
-			
-		}
 	}
 
 }
