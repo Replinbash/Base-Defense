@@ -3,11 +3,11 @@ namespace BaseDefense.Component
 	using BaseDefense.Base.Component;
 	using UnityEngine;
 
-	public class AmmoCollectorComponent : BaseCollider
+	public class AmmoAreaComponent : BaseCollider
 	{
 		public override void Initilaze(ComponentContainer componentContainer)
 		{
-			Debug.Log("<color=green>AmmoCollectorComponent initialized!</color>");
+			Debug.Log("<color=green>AmmoAreaComponent initialized!</color>");
 			base.Initilaze(componentContainer);
 
 			Init();
@@ -16,8 +16,8 @@ namespace BaseDefense.Component
 		protected override void OnTriggerEnter(Collider other)
 		{
 			if (other.CompareTag(PLAYER_TRÝGGER))
-			{				
-				_stateEventContainer.OnAmmoCollect();
+			{
+				_stateEventContainer.OnAmmoArea();
 			}
 		}
 
@@ -28,8 +28,5 @@ namespace BaseDefense.Component
 				_stateEventContainer.ReturnUpgradeIdle();
 			}
 		}
-
-
 	}
-
 }

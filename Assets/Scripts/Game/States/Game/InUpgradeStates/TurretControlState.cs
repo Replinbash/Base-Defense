@@ -7,8 +7,8 @@ namespace BaseDefense.State
 
 	public class TurretControlState : StateMachine
 	{
-		private TestCamera _testCamera;
 		private StateEventContainer _stateEventContainer;
+		private TestCamera _testCamera;
 
 		public TurretControlState(ComponentContainer compenentContainer)
 		{

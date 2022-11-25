@@ -18,6 +18,8 @@ namespace BaseDefense.State
 		{
 			Debug.Log("Upgrade Idle State OnEnter!");
 			_stateEventContainer.TurretControlEvent += OnTurretControlRequest;
+			_stateEventContainer.AmmoCollectEvent += OnAmmoCollectRequest;
+			_stateEventContainer.AmmoAreaEvent += OnAmmoAreaRequest;	
 		}
 
 		private void OnTurretControlRequest()
@@ -25,10 +27,22 @@ namespace BaseDefense.State
 			SendTrigger((int)StateTriggers.TURRET_CONTROL_REQUEST);
 		}
 
+		private void OnAmmoCollectRequest()
+		{
+			SendTrigger((int)StateTriggers.TURRET_AMMO_COLLECT_REQUEST);
+		}
+
+		private void OnAmmoAreaRequest()
+		{
+			SendTrigger((int)StateTriggers.TURRET_AMMO_AREA_REQUEST);
+		}
+
 		protected override void OnExit()
 		{
 			Debug.Log("Upgrade Idle State OnExit!");
 			_stateEventContainer.TurretControlEvent -= OnTurretControlRequest;
+			_stateEventContainer.AmmoCollectEvent -= OnAmmoCollectRequest;
+			_stateEventContainer.AmmoAreaEvent -= OnAmmoAreaRequest;
 		}
 	}
 }

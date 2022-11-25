@@ -44,6 +44,7 @@ namespace BaseDefense.Component
 			_bulletFactory.OnDestruct();
 		}
 
+		public PlayerController Player => _player;
 
 	}
 

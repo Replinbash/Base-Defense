@@ -9,8 +9,6 @@ namespace BaseDefense.Component
 
 		private const string BASE_TRÝGGER = "InBaseTrigger";
 		private const string BASE_OUT_TRÝGGER = "BaseOutTrigger";
-		private const string MONEY_TRÝGGER = "Money";
-		private const string GEM_TRÝGGER = "Gem";
 
 		public void Initilaze(ComponentContainer componentContainer)
 		{
@@ -32,9 +30,6 @@ namespace BaseDefense.Component
 			}
 
 
-		}
-
-		
+		}		
 	}
-
 }
